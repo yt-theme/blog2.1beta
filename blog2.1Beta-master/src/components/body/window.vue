@@ -52,12 +52,11 @@ export default {
       this.startY = startY
       this.ProjectT = ProjectT
       window.onmousemove = this.tabHandleMouseMove
-      document.onmouseup      = this.tabHandleMouseUp
+      window.onmouseup      = this.tabHandleMouseUp
     },
     tabHandleMouseMove: function(e) {
       this.ProjectT.style.left = e.clientX-this.startX+"px"
       this.ProjectT.style.top  = e.clientY-this.startY+"px"
-      console.log((e.clientY-this.startY))
       if ((e.clientY-this.startY) <= 33) {
         this.ProjectT.style.top = "33px"
       }
