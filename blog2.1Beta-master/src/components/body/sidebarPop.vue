@@ -18,19 +18,35 @@
             <template v-if="titleTop">
                 <h1>{{ this.$store.state.sidebarPoptitle ? this.$store.state.sidebarPoptitle : titleTop }}</h1>
             </template>
+
             <div class="table_head">
-                <ul style="display: flex;" v-if="this.$store.state.sidebarPopData['id'] !== 'num1'">
+                <!-- <ul style="display: flex;" v-if="this.$store.state.sidebarPopData['id'] !== 'num1'">
                     <li><span>NameList</span></li>
                     <li><span>Date</span></li>
                     <li><span>Id</span></li>
-                </ul>
+                </ul> -->
             </div>
+
             <div class="content_container">
-                <ul v-if="this.$store.state.sidebarPopData['id'] !== 'num1'">
+              <table v-if="this.$store.state.sidebarPopData['id'] !== 'num1'">
+                <tr>
+                  <td>NameList</td>
+                  <td>Date</td>
+                  <td>Id</td>
+                </tr>
+                <tr v-for="i in this.$store.state.sidebarPopData['content']">
+                  <td>{{i.label}}</td>
+                  <td>{{i.date}}</td>
+                  <td>{{i.id}}</td>
+                  <td><button @click='sidebarPopHistoryDelete(i.id, i.type)'>Del</button></td>
+                </tr>
+              </table>
+                <!-- <ul v-if="this.$store.state.sidebarPopData['id'] !== 'num1'">
                     <li v-for="i in this.$store.state.sidebarPopData['content']">
                         <span>{{i.label}}</span><span>{{i.date}}</span><span>{{i.id}}</span><button @click='sidebarPopHistoryDelete(i.id, i.type)'>Del</button>
                     </li>
-                </ul>
+                </ul> -->
+
                 <!-- new article -->
                 <div class="article" v-if="this.$store.state.sidebarPopData['id'] == 'num1'">
 
@@ -253,27 +269,33 @@ export default {
     height: calc(100% - 121px);
     overflow: auto;
 }
-.content_container ul {
+/* .content_container ul {
     display: block;
     list-style: none;
     overflow: auto;
+} */
+.content_container table {
+  width: 100%;
 }
-.content_container ul> li {
+.content_container tr {
     line-height: 1.5;
     word-wrap: break-word;
     word-break: break-all;
     margin-bottom: 11px;
-    padding: 0 11px;
+    padding: 11px;
 }
-.content_container ul> li:hover {
+.content_container tr:hover {
     box-shadow: 0 0px 14px #B0B6B6 inset;
     border-radius: 4px;
 }
-.content_container ul> li> span, .table_head> ul> li> span {
+.content_container tr> td {
+  padding: 5px;
+}
+/* .content_container ul> li> span, .table_head> ul> li> span {
     display: inline-block;
     min-width: 273px;
-}
-.content_container ul> li> button {
+} */
+.content_container button {
     border: none;
     outline: none;
     border-radius: 4px;
