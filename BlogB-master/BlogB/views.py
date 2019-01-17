@@ -13,7 +13,7 @@ import base64
 from django.conf import settings
 ############## db ##################
 from pymongo import MongoClient
-conn = MongoClient('localhost', 27017)
+conn = MongoClient('0.0.0.0', 27017)
 db = conn.blog
 ############## eb end ##############
 ############## global ##############
@@ -532,3 +532,15 @@ def getImgList(request):
                     'state': 'err',
                 }
             })
+def getMonitor(request):
+    if request.method == "GET":
+        cmdRet = os.popen('df -h')
+        cmdRet_r = cmdRet.readlines()
+        res_line = ''
+        for line in cmdRet_r:
+            res_line += line
+        return JsonResponse({
+            "res": {
+                'content': res_line,
+            }
+        }) 

@@ -1,13 +1,11 @@
 <template>
     <div class="header_container text_no_select">
-      <div class="header_inner_left">
-        <div class="header_left">
-            <Logo></Logo>
-            <!-- <MenuList></MenuList> -->
-        </div>
-        <div class="header_center">
-            <Search></Search>
-        </div>
+      <div class="header_left">
+          <Logo></Logo>
+          <!-- <MenuList></MenuList> -->
+      </div>
+      <div class="header_center">
+          <Search></Search>
       </div>
       <div class="header_right">
           <WebsocketSysMonitor></WebsocketSysMonitor>
@@ -62,7 +60,7 @@ export default {
     overflow-x: auto; */
   }
 }
-.header_inner_left, .header_left, .header_right {
+.header_left, .header_right {
     display: flex;
     justify-content: center;
 }

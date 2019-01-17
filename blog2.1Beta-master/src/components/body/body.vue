@@ -5,6 +5,7 @@
         <notifyPop></notifyPop>
         <Sidebar></Sidebar>
         <component v-for="i in this.$store.state.windowItem" :is="i.component" :label="i.label" :id="i.id"></component>
+        <ViewPop v-if="this.$store.state.viewPopShow_state" :text="this.$store.state.monitor_content"></ViewPop>
     </div>
 </template>
 
@@ -13,12 +14,14 @@ import Desktop from './desktop'
 import Sidebar from './sidebar'
 import window from './window'
 import notifyPop from '../Public/notifyPop'
+import ViewPop from '../Public/viewPop'
 export default {
     components: {
         Desktop,
         Sidebar,
         window,
-        notifyPop
+        notifyPop,
+        ViewPop
     },
     data () {
         return {

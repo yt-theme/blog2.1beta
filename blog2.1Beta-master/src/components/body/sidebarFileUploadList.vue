@@ -73,18 +73,20 @@ export default {
 
             }
             // if file img then let show
-            // if (this.selectedFile.type == 'image/png' ||
-            //     this.selectedFile.type == 'image/svg+xml' ||
-            //     this.selectedFile.type == 'image/jpeg' ||
-            //     this.selectedFile.type == 'image/gif') {
+            let imgs = this.$refs.sidebarUploadShowImg
+            if (this.selectedFile.type == 'image/png' ||
+                this.selectedFile.type == 'image/svg+xml' ||
+                this.selectedFile.type == 'image/jpeg' ||
+                this.selectedFile.type == 'image/gif') {
 
-            //     // get img tag
-            //     let imgs = this.$refs.sidebarUploadShowImg
-            //     // file allready
-            //     reader.onload = function() {
-            //         imgs.setAttribute('src', reader.result)
-            //     }
-            // }
+                // get img tag
+                // file allready
+                reader.onload = function() {
+                    imgs.setAttribute('src', reader.result)
+                }
+            } else {
+              imgs.setAttribute('src', '')
+            }
         },
         sureUploadFile () {
             this.$store.dispatch('set_file_update_state', false)

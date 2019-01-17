@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import Vuex from 'vuex'
-let IP = '127.0.0.1:8000/'
+let IP = '192.168.1.92:8000/'
 let reqUrl = 'http://' + IP
 let socketUrl = 'ws://' + IP
 // NotifyPop timer
@@ -58,7 +58,12 @@ export default new Vuex.Store({
         fileList: {
             url: '',
         },
-        file_update_state: true
+        // 文件上传是否操作完毕 不论成功与否
+        file_update_state: true,
+        // 预览框显示
+        viewPopShow_state: false,
+        // monitor 内容
+        monitor_content: '',
     },
     mutations: {
         checkLoginState (state, dat) {
@@ -302,6 +307,17 @@ export default new Vuex.Store({
         change_file_update_state (state, dat) {
           // bool
           state.file_update_state = dat
+        },
+        // 改变预览框状态
+        change_viewPopShow_state (state, dat) {
+          // bool
+          state.viewPopShow_state = dat
+        },
+        change_monitor_content (state, dat) {
+          let qs = require('qs')
+            axios.get(reqUrl + 'getMonitor/',qs.stringify(dat)).then((res)=> {
+                state.monitor_content = res.data.res.content
+            })
         }
     },
     actions: {
@@ -531,6 +547,14 @@ export default new Vuex.Store({
         // 设置文件上传状态
         set_file_update_state (context, dat) {
           context.commit('change_file_update_state', dat)
+        },
+        // 设置预览框状态
+        set_viewPopShow_state (context, dat) {
+          context.commit('change_viewPopShow_state', dat)
+        },
+        // 设置 monitor 内容
+        set_monitor_content (context, dat) {
+          context.commit('change_monitor_content', dat)
         }
     }
 })

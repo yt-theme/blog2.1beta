@@ -47,4 +47,5 @@ urlpatterns = [
     url(r'^uploadFile/$',views.uploadFile),
     url(r'^img/(?P<path>.*)/$', serve, {'document_root': settings.STATICFILES_DIRS[0]}),
     url(r'^getImgList/$',views.getImgList),
+    url(r'^getMonitor/$',views.getMonitor),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,5 +1,5 @@
 <template>
-    <div class="websocket_sysMonitor_container">
+    <div class="websocket_sysMonitor_container" @click="changeViewPopState()">
         monitor
     </div>
 </template>
@@ -9,6 +9,12 @@ export default {
     methods: {
         createWebSocket() {
             // this.$store.dispatch('createSysMonitorWebSocket')
+        },
+        changeViewPopState () {
+          // 显示 pop
+          this.$store.dispatch("set_viewPopShow_state", true)
+          // 请求数据
+          this.$store.dispatch("set_monitor_content", true)
         }
     },
     created() {
@@ -25,7 +31,7 @@ export default {
     border-radius: 4px;
     color: #B0B6B6;
     background-color: #666;
-    box-shadow: 0 0 3px #B0B6B6 inset; 
+    box-shadow: 0 0 3px #B0B6B6 inset;
     margin-right: 6px;
     padding: 0 6px;
     cursor: default;
