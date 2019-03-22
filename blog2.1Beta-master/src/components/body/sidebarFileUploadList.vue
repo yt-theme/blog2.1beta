@@ -30,7 +30,7 @@
         </div>
         <!-- click img set text -->
         <input class="getUrl" placeholder="Select Img Url" :value="clickedUrl" v-if="clickedUrl"/>
-        <div class="fileList" style="calc(width:100%);min-height:199px;max-height:36vh;overflow:auto;">
+        <div class="fileList" style="calc(width:100%);min-height:199px;overflow:auto;">
             <div class="fileList_item" v-for="i in this.$store.state.fileList.url"  @click="copyLink(i)" @contextmenu="rightKeyOpe($event, i)">
                 <!-- {{i}} -->
                 <img :src="i" :title="i" width="67px;" height="65px" :alt="i.substring(i.length, i.lastIndexOf('/') + 1)"/>

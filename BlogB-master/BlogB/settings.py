@@ -168,5 +168,5 @@ STATIC_URL = '/img/'
 STATICFILES_DIRS = [
     # '/root/BlogB/img/',
     # '/home/a/pro/django/BlogB/img/',
-    '/home/a/pro/blog2.0/BlogB-master/img/'
+    '/home/a/pro/blog2.1beta/BlogB-master/img/'
 ]

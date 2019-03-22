@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import Vuex from 'vuex'
-let IP = '192.168.1.92:8000/'
+let IP = '192.168.1.93:8000/'
 let reqUrl = 'http://' + IP
 let socketUrl = 'ws://' + IP
 // NotifyPop timer
